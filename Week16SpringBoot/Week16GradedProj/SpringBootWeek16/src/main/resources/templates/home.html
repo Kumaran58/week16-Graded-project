@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">	
+<head>
+<meta charset="UTF-8">
+<title>Ticket Tracker Application</title>
+<style>
+    body {
+		background-color: lightcyan;
+        font-family: Arial, sans-serif;
+        margin: 1%;
+        padding: 1%;
+    }
+
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    form {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: chocolate
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    button {
+        color: white;
+        padding: 8px 14px;
+        border: none;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    button a {
+        color: white;
+        text-decoration: none;
+    }
+
+</style>	
+</head>
+<body>
+    <nav>
+        <a>Ticket Tracker Application</a>
+        <a href="view">View Tickets</a>
+        <a href="add">Create New Tickets</a>
+    </nav>
+    
+    <br>
+    
+    <form action="search-ticket" method="get">
+        <input type="text" name="tickettitle" placeholder="Search by Ticket Title">
+        <button style="background-color: black;"  type="submit">Search</button>
+    </form>
+    <br>
+    <br>
+    
+    <table border="1">
+        
+        <tr>
+            <th>  #  </th>
+            <th>Ticket Title</th>
+            <th>Ticket's Short Description</th>
+            <th>Ticket Created Date</th>
+            <th>Actions</th>
+        </tr>
+        
+        <tr th:each="temp :${ob}">
+            <td th:text="${temp.id}"></td>
+            <td th:text="${temp.tickettitle}"></td>
+            <td th:text="${temp.shortdescription}"></td>
+            <td th:text="${temp.date}"></td>
+            <td>
+                <button style="background-color: green;"><a th:href="@{update-ticket(id=${temp.id})}">Edit</a></button>
+                <button style="background-color: red;"><a th:href="@{delete-ticket(id=${temp.id})}">Delete</a></button>
+                <button style="background-color: darkcyan;"><a th:href="@{view-ticket(id=${temp.id})}">View</a></button>
+            </td>
+        </tr>
+        
+    </table>
+</body>
+</html>

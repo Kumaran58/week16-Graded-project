@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="UTF-8">
+<title>Edit Ticket</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 1%;
+        padding: 1%;
+        background-color: papayawhip;
+    }
+
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    button.updatebutton {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button.updatebutton:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <a>Ticket Tracker Application</a>
+        <a href="view">View Tickets</a>
+        <a href="add">New Tickets</a>
+    </nav>
+
+    <h1>Edit Ticket</h1>
+    <form action="upd-tic" method="post">
+        
+        <p hidden>
+            <label>ID</label>
+            <input type="number" name="id" readonly th:value="${ob.id}" />
+        </p>
+        
+        <label>Ticket Name</label><br>
+        <input type="text" name="tickettitle" th:value="${ob.tickettitle}" placeholder="Enter Ticket Title" /><br><br>
+        
+        <label>Short description</label><br>
+        <input type="text" name="shortdescription" th:value="${ob.shortdescription} " placeholder="Enter Short Description" /><br><br>
+        
+        <label>Content</label><br>
+        <textarea name="content" th:text="${ob.content}" placeholder="Describe Content"></textarea><br><br>
+        
+        <button type="submit" class="updatebutton">Edit</button>
+    </form>
+</body>
+</html>

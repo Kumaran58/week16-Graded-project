@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Ticket</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 1%;
+        padding: 1%;
+        background-color: lightcoral;
+    }
+
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    fieldset {
+        max-width: 600px;
+        margin: 5px auto;
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    button a {
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <a>Ticket Tracker Application</a>
+        <a href="view">View Tickets</a>
+        <a href="add">New Tickets</a>
+    </nav>
+
+    <br>
+    <br>
+    
+    <fieldset>
+        <h3>Id</h3>
+        <p th:text="${ob.id}"></p>
+        <br>
+        <h3>Ticket Title</h3>
+        <p th:text="${ob.tickettitle}"></p>
+        <br>
+        <h3>Ticket's Short Description</h3>
+        <p th:text="${ob.shortdescription}"></p>
+        <br>
+        <h3>Ticket Content</h3>
+        <p th:utext="${ob.content}"></p>
+        <br>
+        <h3>Ticket Created Date</h3>
+        <p th:text="${ob.date}"></p>
+    </fieldset>
+    
+    <br>
+    <br>
+    <button><a href="view">Back</a></button>
+</body>
+</html>
